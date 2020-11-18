@@ -1,0 +1,68 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The purpose of this service is to provide an application\nthat is using plain go code to define an API",
+    "title": "API.",
+    "version": "0.0.1"
+  },
+  "host": "localhost",
+  "paths": {
+    "/hello": {
+      "get": {
+        "description": "Could be any pet",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "tag1",
+          "tag2"
+        ],
+        "summary": "Returns all pets from the system that the user has access to",
+        "operationId": "login",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "user name",
+            "name": "name",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "user password",
+            "name": "password",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login success",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/responses/HelloResponse"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/responses/HelloResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "HelloResponse": {
+      "description": "HelloResponse is an response with helloworld message.",
+      "headers": {
+        "Message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
